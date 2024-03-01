@@ -22,3 +22,5 @@
 *.kate-swp
 *.cache
 .idea/workspace.xml
+".idea/misc.xml" 
+"pps-lab01-intellij-basic-example/pps-lab01-intellij-basic-example.iml" 
