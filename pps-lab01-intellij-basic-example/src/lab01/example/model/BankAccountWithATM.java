@@ -2,6 +2,14 @@ package lab01.example.model;
 
 public class BankAccountWithATM implements BankAccount {
 
+    private AccountHolder accountHolder;
+    private double balance;
+
+    public BankAccountWithATM(AccountHolder account, double initialBalance) {
+        this.accountHolder = account;
+        this.balance = initialBalance;
+    }
+
     @Override
     public AccountHolder getHolder() {
         return null;
