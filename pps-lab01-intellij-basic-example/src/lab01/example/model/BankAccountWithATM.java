@@ -38,10 +38,10 @@ public class BankAccountWithATM implements BankAccount {
     @Override
     public void withdraw(int userID, double amount) {
         if(userID == this.accountHolder.getId()) {
-            if(amount >= this.balance) {
-                throw new IllegalArgumentException("You can't withdraw an amount of money bigger than your balance");
-            } else {
+            if(amount < this.balance) {
                 this.balance = this.balance - amount - ATM_FEE;
+            } else {
+                throw new IllegalArgumentException("You can't withdraw an amount of money bigger than your balance");
             }
         } else {
             throw new IllegalArgumentException("Wrong ID");
