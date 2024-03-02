@@ -2,7 +2,6 @@ import lab01.example.model.AccountHolder;
 import lab01.example.model.BankAccount;
 import lab01.example.model.SimpleBankAccountWithAtm;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,7 +25,7 @@ public class SimpleBankAccountWithAtmTest {
     void createSuccessfullyBankAccount() {
         assertEquals(0.0, this.bankAccount.getBalance());
     }
-    
+
     @Test
     void depositWithATMTest() {
         this.bankAccount.deposit(this.accountHolder.getId(), TEST_AMOUNT_OF_MONEY);
