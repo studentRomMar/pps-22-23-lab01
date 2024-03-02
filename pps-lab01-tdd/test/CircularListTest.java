@@ -51,4 +51,34 @@ public class CircularListTest {
         assertEquals(Optional.of(1), this.circularList.next());
     }
 
+    @Test
+    void pickLastElementWithNextTest() {
+        for(int i = 0; i < 5; i++) {
+            this.circularList.add(i);
+        }
+        for(int i = 0; i < 4; i++) {
+            this.circularList.next();
+        }
+        assertEquals(Optional.of(4), this.circularList.next());
+    }
+
+    @Disabled
+    void pickElementExceedingListSizeTest() {
+        for(int i = 0; i < 5; i++) {
+            this.circularList.add(i);
+            this.circularList.next();
+        }
+        assertEquals(Optional.of(0), this.circularList.next());
+    }
+
+    @Test
+    void resetListIndexTest() {
+        for(int i = 0; i < 5; i++) {
+            this.circularList.add(i);
+            this.circularList.next();
+        }
+        this.circularList.reset();
+        assertEquals(Optional.of(0), this.circularList.next());
+    }
+
 }
