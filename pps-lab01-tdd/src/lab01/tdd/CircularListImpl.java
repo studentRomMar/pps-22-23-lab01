@@ -1,9 +1,19 @@
 package lab01.tdd;
 
 import lab01.tdd.CircularList;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class CircularListImpl implements CircularList {
+
+    private List circularList;
+
+    public CircularListImpl() {
+        this.circularList = new ArrayList();
+    }
+
     @Override
     public void add(int element) {
 
@@ -11,7 +21,7 @@ public class CircularListImpl implements CircularList {
 
     @Override
     public int size() {
-        return 0;
+        return this.circularList.size();
     }
 
     @Override
