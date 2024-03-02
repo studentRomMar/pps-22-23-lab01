@@ -16,7 +16,7 @@ public class CircularListImpl implements CircularList {
 
     @Override
     public void add(int element) {
-
+        this.circularList.add(element);
     }
 
     @Override

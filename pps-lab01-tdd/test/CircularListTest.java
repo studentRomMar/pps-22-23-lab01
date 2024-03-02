@@ -5,8 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * The test suite for testing the CircularList implementation
@@ -30,9 +29,10 @@ public class CircularListTest {
         assertTrue(this.circularList.isEmpty());
     }
 
-    @Disabled
-    public void testTodo(){
-        Assertions.fail();
+    @Test
+    void addElementToListTest() {
+        this.circularList.add(1);
+        assertFalse(this.circularList.isEmpty());
     }
 
 }
