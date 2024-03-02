@@ -69,4 +69,11 @@ public class BankAccountWithATMTest {
         assertThrows(IllegalArgumentException.class,
                 () -> this.bankAccount.withdraw(this.accountHolder.getId(), 2*TEST_AMOUNT_OF_MONEY));
     }
+
+    @Test
+    void cannotWithdrawNegativeAmount() {
+        this.bankAccount.deposit(this.accountHolder.getId(), TEST_AMOUNT_OF_MONEY);
+        assertThrows(IllegalArgumentException.class,
+                () -> this.bankAccount.withdraw(this.accountHolder.getId(), -TEST_AMOUNT_OF_MONEY));
+    }
 }
