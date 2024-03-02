@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -33,6 +35,20 @@ public class CircularListTest {
     void addElementToListTest() {
         this.circularList.add(1);
         assertFalse(this.circularList.isEmpty());
+    }
+
+    @Test
+    void addMultipleElementsToListTest() {
+        for(int i = 0; i < 5; i++) {
+            this.circularList.add(1);
+        }
+        assertEquals(5, this.circularList.size());
+    }
+
+    @Test
+    void nextElementTest() {
+        this.circularList.add(1);
+        assertEquals(Optional.of(1), this.circularList.next());
     }
 
 }
