@@ -1,6 +1,6 @@
 import lab01.example.model.AccountHolder;
 import lab01.example.model.BankAccount;
-import lab01.example.model.BankAccountWithATM;
+import lab01.example.model.SimpleBankAccountWithAtm;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class BankAccountWithATMTest {
+public class SimpleBankAccountWithAtmTest {
 
     private static final double TEST_AMOUNT_OF_MONEY = 100.0;
     private static final double ATM_FEE = 1.0;
@@ -19,19 +19,14 @@ public class BankAccountWithATMTest {
     @BeforeEach
     void beforeEach() {
         accountHolder = new AccountHolder("Mario", "Rossi", 1);
-        bankAccount = new BankAccountWithATM(accountHolder, 0.0);
+        bankAccount = new SimpleBankAccountWithAtm(accountHolder, 0.0);
     }
 
     @Test
     void createSuccessfullyBankAccount() {
         assertEquals(0.0, this.bankAccount.getBalance());
     }
-
-    @Disabled
-    void getHolderTest() {
-        assertEquals("[ID = 1] Mario Rossi", this.bankAccount.getHolder());
-    }
-
+    
     @Test
     void depositWithATMTest() {
         this.bankAccount.deposit(this.accountHolder.getId(), TEST_AMOUNT_OF_MONEY);
