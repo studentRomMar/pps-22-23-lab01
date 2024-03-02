@@ -26,6 +26,8 @@ public class BankAccountWithATM implements BankAccount {
     public void deposit(int userID, double amount) {
         if(userID == this.accountHolder.getId()) {
             this.balance = this.balance + amount - ATM_FEE;
+        } else {
+            throw new IllegalArgumentException("Wrong ID");
         }
     }
 
@@ -33,6 +35,8 @@ public class BankAccountWithATM implements BankAccount {
     public void withdraw(int userID, double amount) {
         if(userID == this.accountHolder.getId()) {
             this.balance = this.balance - amount - ATM_FEE;
+        } else {
+            throw new IllegalArgumentException("Wrong ID");
         }
     }
 }

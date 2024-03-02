@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class BankAccountWithATMTest {
 
@@ -43,5 +44,10 @@ public class BankAccountWithATMTest {
         this.bankAccount.withdraw(ID_TEST, TEST_AMOUNT_OF_MONEY);
         double expectedValue = 2 * TEST_AMOUNT_OF_MONEY - TEST_AMOUNT_OF_MONEY - 2;
         assertEquals(expectedValue, this.bankAccount.getBalance());
+    }
+
+    @Test
+    void depositWrongIdTest() {
+        assertThrows(IllegalArgumentException.class, () -> this.bankAccount.deposit(2, TEST_AMOUNT_OF_MONEY));
     }
 }
