@@ -9,9 +9,11 @@ import java.util.Optional;
 public class CircularListImpl implements CircularList {
 
     private List circularList;
+    private int listIndex;
 
     public CircularListImpl() {
         this.circularList = new ArrayList();
+        listIndex = -1;
     }
 
     @Override
@@ -31,7 +33,8 @@ public class CircularListImpl implements CircularList {
 
     @Override
     public Optional<Integer> next() {
-        return Optional.of(1);
+        listIndex++;
+        return Optional.of((Integer) this.circularList.get(listIndex));
     }
 
     @Override
