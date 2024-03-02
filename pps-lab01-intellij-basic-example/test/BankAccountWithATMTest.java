@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class BankAccountWithATMTest {
 
     private static final double TEST_AMOUNT_OF_MONEY = 100.0;
+    private static final double ATM_FEE = 1.0;
 
     private AccountHolder accountHolder;
     private BankAccount bankAccount;
@@ -34,14 +35,14 @@ public class BankAccountWithATMTest {
     @Test
     void depositWithATMTest() {
         this.bankAccount.deposit(this.accountHolder.getId(), TEST_AMOUNT_OF_MONEY);
-        assertEquals(99.0, this.bankAccount.getBalance());
+        assertEquals(TEST_AMOUNT_OF_MONEY - ATM_FEE, this.bankAccount.getBalance());
     }
 
     @Test
     void withdrawWithATMTest() {
         this.bankAccount.deposit(this.accountHolder.getId(), 2 * TEST_AMOUNT_OF_MONEY);
         this.bankAccount.withdraw(this.accountHolder.getId(), TEST_AMOUNT_OF_MONEY);
-        double expectedValue = 2 * TEST_AMOUNT_OF_MONEY - TEST_AMOUNT_OF_MONEY - 2;
+        double expectedValue = 2 * TEST_AMOUNT_OF_MONEY - TEST_AMOUNT_OF_MONEY - 2 * ATM_FEE;
         assertEquals(expectedValue, this.bankAccount.getBalance());
     }
 
@@ -54,5 +55,11 @@ public class BankAccountWithATMTest {
     void withdrawWrongIdTest() {
         this.bankAccount.deposit(this.accountHolder.getId(), 2*TEST_AMOUNT_OF_MONEY);
         assertThrows(IllegalArgumentException.class, () -> this.bankAccount.withdraw(2, TEST_AMOUNT_OF_MONEY));
+    }
+
+    @Test
+    void cannotWithdrawBiggerThanBalanceTest() {
+        this.bankAccount.deposit(this.accountHolder.getId(), TEST_AMOUNT_OF_MONEY);
+        assertThrows(IllegalArgumentException.class, () -> this.bankAccount.withdraw(this.accountHolder.getId(), 2*TEST_AMOUNT_OF_MONEY));
     }
 }
