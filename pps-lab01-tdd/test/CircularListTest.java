@@ -9,7 +9,6 @@ public class CircularListTest {
 
     //TODO: test implementation
 
-    @Disabled
     @Test public void testTodo(){
         Assertions.fail();
     }
