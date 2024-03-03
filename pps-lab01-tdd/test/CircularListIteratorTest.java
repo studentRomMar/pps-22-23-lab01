@@ -24,4 +24,10 @@ public class CircularListIteratorTest {
     void isListEmptyTest() {
         assertTrue(this.circularList.isEmpty());
     }
+
+    @Test
+    void addElementToListTest() {
+        this.circularList.add(1);
+        assertEquals(1, this.circularList.size());
+    }
 }
