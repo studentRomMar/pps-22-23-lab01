@@ -90,4 +90,17 @@ public class CircularListTest {
         assertEquals(Optional.of(3), this.circularList.previous());
     }
 
+    @Test
+    void pickElementExceedingBackwardsListTest() {
+        for(int i = 0; i < 5; i++) {
+            this.circularList.add(i);
+            this.circularList.next();
+        }
+
+        for(int i = 5; i > 0; i--) {
+            this.circularList.previous();
+        }
+        assertEquals(Optional.of(3), this.circularList.previous());
+    }
+
 }
