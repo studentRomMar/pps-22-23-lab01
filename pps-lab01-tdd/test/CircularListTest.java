@@ -81,4 +81,13 @@ public class CircularListTest {
         assertEquals(Optional.of(0), this.circularList.next());
     }
 
+    @Test
+    void previousElementTest() {
+        for(int i = 0; i < 5; i++) {
+            this.circularList.add(i);
+            this.circularList.next();
+        }
+        assertEquals(Optional.of(4), this.circularList.previous());
+    }
+
 }
