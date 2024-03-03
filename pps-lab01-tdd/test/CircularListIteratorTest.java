@@ -10,6 +10,12 @@ public class CircularListIteratorTest {
 
     private CircularList circularList;
 
+    private void initializeList(CircularList list) {
+        for(int i = 0; i < 5; i++) {
+            list.add(i);
+        }
+    }
+
     @BeforeEach
     void createCircularList() {
         this.circularList = new CircularListImpl();
@@ -33,9 +39,12 @@ public class CircularListIteratorTest {
 
     @Test
     void addMultipleElementsToListTest() {
-        for(int i = 0; i < 5; i++) {
-            this.circularList.add(i);
-        }
+        this.initializeList(this.circularList);
         assertEquals(5, this.circularList.size());
+    }
+
+    @Test
+    void nextElementInListTest() {
+        
     }
 }
