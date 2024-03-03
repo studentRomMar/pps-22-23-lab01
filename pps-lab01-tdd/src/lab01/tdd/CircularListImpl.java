@@ -38,12 +38,13 @@ public class CircularListImpl implements CircularList {
             this.reset();
             this.listIndex++;
         }
-        return Optional.of((Integer) this.circularList.get(listIndex));
+        return Optional.of((Integer) this.circularList.get(this.listIndex));
     }
 
     @Override
     public Optional<Integer> previous() {
-        return Optional.of(4);
+        this.listIndex--;
+        return Optional.of((Integer) this.circularList.get(this.listIndex));
     }
 
     @Override
