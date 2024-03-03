@@ -62,7 +62,7 @@ public class CircularListTest {
         assertEquals(Optional.of(4), this.circularList.next());
     }
 
-    @Disabled
+    @Test
     void pickElementExceedingListSizeTest() {
         for(int i = 0; i < 5; i++) {
             this.circularList.add(i);

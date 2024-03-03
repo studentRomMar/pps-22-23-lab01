@@ -33,7 +33,11 @@ public class CircularListImpl implements CircularList {
 
     @Override
     public Optional<Integer> next() {
-        listIndex++;
+        this.listIndex++;
+        if(this.listIndex >= this.size()) {
+            this.reset();
+            this.listIndex++;
+        }
         return Optional.of((Integer) this.circularList.get(listIndex));
     }
 
