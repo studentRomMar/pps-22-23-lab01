@@ -30,4 +30,12 @@ public class CircularListIteratorTest {
         this.circularList.add(1);
         assertEquals(1, this.circularList.size());
     }
+
+    @Test
+    void addMultipleElementsToListTest() {
+        for(int i = 0; i < 5; i++) {
+            this.circularList.add(i);
+        }
+        assertEquals(5, this.circularList.size());
+    }
 }
