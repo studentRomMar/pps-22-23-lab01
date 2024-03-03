@@ -16,6 +16,19 @@ public class CircularListTest {
 
     private CircularList circularList;
 
+    private void initializeCircularListWithElements(CircularList list) {
+        for(int i = 0; i < 5; i++) {
+            list.add(i);
+        }
+    }
+
+    private void carryAlongIteratorAndInitializeList(CircularList list) {
+        for(int i = 0; i < 5; i++) {
+            list.add(i);
+            list.next();
+        }
+    }
+
     @BeforeEach
     void createCircularList() {
         this.circularList = new CircularListImpl();
@@ -39,9 +52,7 @@ public class CircularListTest {
 
     @Test
     void addMultipleElementsToListTest() {
-        for(int i = 0; i < 5; i++) {
-            this.circularList.add(1);
-        }
+        this.initializeCircularListWithElements(this.circularList);
         assertEquals(5, this.circularList.size());
     }
 
@@ -53,9 +64,7 @@ public class CircularListTest {
 
     @Test
     void pickLastElementWithNextTest() {
-        for(int i = 0; i < 5; i++) {
-            this.circularList.add(i);
-        }
+        this.initializeCircularListWithElements(this.circularList);
         for(int i = 0; i < 4; i++) {
             this.circularList.next();
         }
@@ -64,39 +73,27 @@ public class CircularListTest {
 
     @Test
     void pickElementExceedingListSizeTest() {
-        for(int i = 0; i < 5; i++) {
-            this.circularList.add(i);
-            this.circularList.next();
-        }
+        this.carryAlongIteratorAndInitializeList(this.circularList);
         assertEquals(Optional.of(0), this.circularList.next());
     }
 
     @Test
     void resetListIndexTest() {
-        for(int i = 0; i < 5; i++) {
-            this.circularList.add(i);
-            this.circularList.next();
-        }
+        this.carryAlongIteratorAndInitializeList(this.circularList);
+
         this.circularList.reset();
         assertEquals(Optional.of(0), this.circularList.next());
     }
 
     @Test
     void previousElementTest() {
-        for(int i = 0; i < 5; i++) {
-            this.circularList.add(i);
-            this.circularList.next();
-        }
+        this.carryAlongIteratorAndInitializeList(this.circularList);
         assertEquals(Optional.of(3), this.circularList.previous());
     }
 
     @Test
     void pickElementExceedingBackwardsListTest() {
-        for(int i = 0; i < 5; i++) {
-            this.circularList.add(i);
-            this.circularList.next();
-        }
-
+        this.carryAlongIteratorAndInitializeList(this.circularList);
         for(int i = 5; i > 0; i--) {
             this.circularList.previous();
         }
