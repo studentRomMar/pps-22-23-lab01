@@ -1,8 +1,16 @@
 package lab01.tdd.step2;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class CircularListImpl implements CircularList {
+
+    private ArrayList<Integer> circularList;
+
+    public CircularListImpl() {
+        this.circularList = new ArrayList<>();
+    }
+
     @Override
     public void add(int element) {
 
@@ -10,7 +18,7 @@ public class CircularListImpl implements CircularList {
 
     @Override
     public int size() {
-        return 0;
+        return this.circularList.size();
     }
 
     @Override
