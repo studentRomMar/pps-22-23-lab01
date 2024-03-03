@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CircularListIteratorTest {
 
@@ -17,5 +18,10 @@ public class CircularListIteratorTest {
     @Test
     void createCorrectlyCircularListTest() {
         assertEquals(0, this.circularList.size());
+    }
+
+    @Test
+    void isListEmptyTest() {
+        assertTrue(this.circularList.isEmpty());
     }
 }
