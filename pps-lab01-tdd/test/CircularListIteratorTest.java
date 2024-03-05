@@ -3,15 +3,22 @@ import lab01.tdd.step2.CircularListImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Iterator;
+import java.util.Optional;
+import java.util.stream.IntStream;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CircularListIteratorTest {
 
+    private static final int NUM_LIST_ELEMENTS = 5;
+
     private CircularList circularList;
 
-    private void initializeList(CircularList list) {
-        for(int i = 0; i < 5; i++) {
+
+    private void initializeList(CircularList list, int numElements) {
+        for(int i = 0; i < numElements; i++) {
             list.add(i);
         }
     }
@@ -39,12 +46,14 @@ public class CircularListIteratorTest {
 
     @Test
     void addMultipleElementsToListTest() {
-        this.initializeList(this.circularList);
+        this.initializeList(this.circularList, NUM_LIST_ELEMENTS);
         assertEquals(5, this.circularList.size());
     }
 
     @Test
-    void nextElementInListTest() {
-        
+    void simpleForwardIteratorTest() {
+        this.initializeList(this.circularList, NUM_LIST_ELEMENTS);
+        Iterator<Optional<Integer>> iterator = this.circularList.forwardIterator();
+        IntStream.range(0, NUM_LIST_ELEMENTS).forEach(integer -> assertEquals(integer, iterator.next().get()));
     }
 }

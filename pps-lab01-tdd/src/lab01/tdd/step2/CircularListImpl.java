@@ -2,6 +2,7 @@ package lab01.tdd.step2;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Optional;
 
 public class CircularListImpl implements CircularList {
 
@@ -27,12 +28,35 @@ public class CircularListImpl implements CircularList {
     }
 
     @Override
-    public Iterator<Integer> forwardIterator() {
-        return null;
+    public Iterator<Optional<Integer>> forwardIterator() {
+        return new Iterator<Optional<Integer>>() {
+            private int index = 0;
+            @Override
+            public boolean hasNext() {
+                return true;
+            }
+
+            @Override
+            public Optional<Integer> next() {
+                Optional<Integer> value;
+                if(circularList.isEmpty()) {
+                    value = Optional.empty();
+                } else {
+                    value = Optional.of(circularList.get(index));
+                    setIndex();
+                }
+
+                return value;
+            }
+
+            private void setIndex() {
+                index = (index + 1 >= circularList.size() ? 0 : index + 1);
+            }
+        };
     }
 
     @Override
-    public Iterator<Integer> backwardIterator() {
-        return null;
+    public Iterator<Optional<Integer>> backwardIterator() {
+        return new CircularListIterator(this.circularList.size());
     }
 }
