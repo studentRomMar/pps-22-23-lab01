@@ -58,14 +58,26 @@ public class CircularListImpl implements CircularList {
     @Override
     public Iterator<Optional<Integer>> backwardIterator() {
         return new Iterator<Optional<Integer>>() {
+            private int index = circularList.size() - 1;
             @Override
             public boolean hasNext() {
-                return false;
+                return true;
             }
 
             @Override
             public Optional<Integer> next() {
-                return Optional.empty();
+                Optional<Integer> value;
+                if(circularList.isEmpty()) {
+                    value = Optional.empty();
+                } else {
+                    value = Optional.of(circularList.get(index));
+                    setIndex();
+                }
+                return value;
+            }
+
+            private void setIndex() {
+                index = index <= 0 ? circularList.size() - 1 : index - 1;
             }
         };
     }

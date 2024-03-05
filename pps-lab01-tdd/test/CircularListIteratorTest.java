@@ -3,7 +3,11 @@ import lab01.tdd.step2.CircularListImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
@@ -47,13 +51,37 @@ public class CircularListIteratorTest {
     @Test
     void addMultipleElementsToListTest() {
         this.initializeList(this.circularList, NUM_LIST_ELEMENTS);
-        assertEquals(5, this.circularList.size());
+        assertEquals(NUM_LIST_ELEMENTS, this.circularList.size());
     }
 
     @Test
-    void simpleForwardIteratorTest() {
+    void ForwardIteratorTest() {
         this.initializeList(this.circularList, NUM_LIST_ELEMENTS);
         Iterator<Optional<Integer>> iterator = this.circularList.forwardIterator();
         IntStream.range(0, NUM_LIST_ELEMENTS).forEach(integer -> assertEquals(integer, iterator.next().get()));
+    }
+
+    @Test
+    void forwardIteratorEmptyList() {
+        Iterator<Optional<Integer>> iterator = this.circularList.forwardIterator();
+        IntStream.range(0, NUM_LIST_ELEMENTS).forEach(integer -> assertEquals(Optional.empty(), iterator.next()));
+    }
+
+    @Test
+    void backwardIteratorListTest() {
+        this.initializeList(this.circularList, NUM_LIST_ELEMENTS);
+        List<Integer> comparisonList = new ArrayList<>();
+        for(int i = NUM_LIST_ELEMENTS - 1; i >= 0; i--) {
+            comparisonList.add(i);
+        }
+        Iterator<Optional<Integer>> iterator = this.circularList.backwardIterator();
+        comparisonList.forEach(integer -> assertEquals(integer, iterator.next().get()));
+
+    }
+
+    @Test
+    void backwardIteratorEmptyListTest() {
+        Iterator<Optional<Integer>> iterator = this.circularList.backwardIterator();
+        IntStream.range(0, NUM_LIST_ELEMENTS).forEach(integer -> assertEquals(Optional.empty(), iterator.next()));
     }
 }
