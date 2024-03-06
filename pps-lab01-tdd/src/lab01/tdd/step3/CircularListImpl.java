@@ -2,6 +2,7 @@ package lab01.tdd.step3;
 
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 public class CircularListImpl implements CircularList {
 
@@ -27,7 +28,8 @@ public class CircularListImpl implements CircularList {
     }
 
     @Override
-    public Optional<Integer> filteredNext() {
-        return Optional.empty();
+    public Optional<Integer> filteredNext(Predicate<Integer> predicate) {
+        Optional<Integer> value = Optional.empty();
+        return value;
     }
 }

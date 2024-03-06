@@ -2,6 +2,8 @@ import lab01.tdd.step3.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -30,5 +32,10 @@ public class CircularListFilteredNextTest {
             this.circularList.add(i);
         }
         assertEquals(5, this.circularList.size());
+    }
+
+    @Test
+    public void filteredNextEmptyListTest() {
+        assertEquals(Optional.empty(), this.circularList.filteredNext(element -> element == 0));
     }
 }

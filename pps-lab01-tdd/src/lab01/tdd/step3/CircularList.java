@@ -1,6 +1,7 @@
 package lab01.tdd.step3;
 
 import java.util.Optional;
+import java.util.function.Predicate;
 
 /**
  * Represents a list of integers, with a built-in iterator that is bidirectional and circular.
@@ -32,5 +33,5 @@ public interface CircularList {
      *
      * @return the next element of the list, or an empty optional if the list is empty
      */
-    Optional<Integer> filteredNext();
+    Optional<Integer> filteredNext(Predicate<Integer> predicate);
 }
